@@ -58,7 +58,7 @@ namespace CrudBootstrap.Controllers
                 obj.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("EmpTable","Home");
         }
 
         public ActionResult Delete(int id)
@@ -67,7 +67,7 @@ namespace CrudBootstrap.Controllers
             var deleteitem = obj.employees.Where(b => b.Id == id).First();
             obj.employees.Remove(deleteitem);
             obj.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("EmpTable","Home");
         }
 
         public ActionResult Edit(int id)
