@@ -12,5 +12,15 @@
   </EntityType>
   <EntityContainer Name="crudEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="employees" EntityType="Self.employee" />
+    <EntitySet Name="user_info" EntityType="crudModel.user_info" />
   </EntityContainer>
+  <EntityType Name="user_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

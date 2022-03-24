@@ -11,6 +11,7 @@ namespace CrudBootstrap.Controllers
     public class EmpController : Controller
     {
         // GET: Emp
+        [Authorize]
         public ActionResult Index()
         {
             crudEntities1 obj = new crudEntities1();
@@ -31,6 +32,7 @@ namespace CrudBootstrap.Controllers
             }
             return View(empobj);
         }
+        [Authorize]
         [HttpGet]
         public ActionResult Add()
         {
@@ -61,6 +63,7 @@ namespace CrudBootstrap.Controllers
             return RedirectToAction("EmpTable","Home");
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             crudEntities1 obj = new crudEntities1();
@@ -70,6 +73,7 @@ namespace CrudBootstrap.Controllers
             return RedirectToAction("EmpTable","Home");
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             EmpModel empobj = new EmpModel();

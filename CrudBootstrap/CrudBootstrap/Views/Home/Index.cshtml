@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CrudBootstrap.Models.UserInfoModel
+
+@{
     ViewBag.Title = "Home Page";
     Layout = null;
 }
@@ -10,7 +12,11 @@
 <link href="~/Content/AppCSS/css/startmin.css" rel="stylesheet" />
 
 <link href="~/Content/AppCSS/css/font-awesome.min.css" rel="stylesheet" />
-
+<style>
+    .error{
+        color:red;
+    }
+</style>
 
 <div class="container">
     <div class="row">
@@ -20,13 +26,18 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                    {
                         <fieldset>
+                            <div class="error">@TempData["Invalid"]</div>
+                            <div class="error">@TempData["wrong"]</div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
                             </div>
                             <div class="checkbox">
                                 <label>
@@ -34,11 +45,15 @@
                                 </label>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <a href="@Url.Action("IndexDashBoard","Home")" class="btn btn-lg btn-success btn-block">Login</a>
+                            <button type="submit" class="btn btn-success">Login</button>
                         </fieldset>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryval")

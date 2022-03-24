@@ -26,5 +26,6 @@ namespace CrudBootstrap.DB_Connect
         }
     
         public virtual DbSet<employee> employees { get; set; }
+        public virtual DbSet<user_info> user_info { get; set; }
     }
 }
