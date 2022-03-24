@@ -266,6 +266,7 @@
     <Content Include="Views\Home\IndexDashBoard.cshtml" />
     <Content Include="Views\Shared\_LeftNavBar.cshtml" />
     <Content Include="Views\Home\EmpTable.cshtml" />
+    <Content Include="Views\Home\UserReg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

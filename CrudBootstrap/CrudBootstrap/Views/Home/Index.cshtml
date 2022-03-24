@@ -28,25 +28,29 @@
                 <div class="panel-body">
                     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
                     {
-                        <fieldset>
-                            <div class="error">@TempData["Invalid"]</div>
-                            <div class="error">@TempData["wrong"]</div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
-                            </div>
-                            <div class="form-group">
-                                @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                </label>
-                            </div>
-                            <!-- Change this to a button or input when using this as a form -->
-                            <button type="submit" class="btn btn-success">Login</button>
-                        </fieldset>
+                    <fieldset>
+                        <div class="error">@TempData["Invalid"]</div>
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Enter email" })
+                            @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
+                        </div>
+                        <div class="error">@TempData["wrong"]</div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "Enter password" })
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                            </label>
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </fieldset>
+                        <br />
+                        <span>New here?</span>
+                        <a href="@Url.Action("UserReg","Home")">Create an Account</a>
                     }
                 </div>
             </div>

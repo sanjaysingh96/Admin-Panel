@@ -12,12 +12,14 @@ namespace CrudBootstrap.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
+        
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        
         public ActionResult Index(UserInfoModel userobj)
         {
             crudEntities1 obj = new crudEntities1();
@@ -39,7 +41,7 @@ namespace CrudBootstrap.Controllers
                 }
                 else
                 {
-                    TempData["Wrong"] = "Wrong Email or Password";
+                    TempData["Wrong"] = "Wrong Password Please Enter Valid Password";
                     return View();
                 }
             }
@@ -81,7 +83,29 @@ namespace CrudBootstrap.Controllers
             return View(empobj);
         }
 
+        [HttpGet]
+        public ActionResult UserReg()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        public ActionResult UserReg(UserInfoModel useobj)
+        {
+            crudEntities1 obj = new crudEntities1();
+            user_info infoobj = new user_info();
+            infoobj.id = useobj.id;
+            infoobj.name = useobj.name;
+            infoobj.email = useobj.email;
+            infoobj.password = useobj.password;
+
+            obj.user_info.Add(infoobj);
+            obj.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+            //return View();
+        }
 
 
 
@@ -100,8 +124,8 @@ namespace CrudBootstrap.Controllers
 
             return View();
         }
-        [Authorize]
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
